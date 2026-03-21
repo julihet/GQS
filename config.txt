@@ -1,0 +1,3 @@
+startCommand=aa=$PWD; mkdir -p ~/neo4j/THREAD_FOLDER; cd ~/neo4j/THREAD_FOLDER; cp -r $aa/neo4j ~/neo4j/THREAD_FOLDER; mkdir -p ./logs/neo4j; cd neo4j; ./change_port.sh conf/neo4j.conf THREAD_WEB THREAD_SERVER; ./bin/neo4j-admin server console 2>&1 &
+stopCommand=kill -9 `netstat -tulnp | grep :THREAD_WEB | awk '{print $7}' | cut -d'/' -f1`
+resetCommand=rm -rf ~/neo4j/THREAD_FOLDER
