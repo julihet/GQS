@@ -19,11 +19,11 @@
       <artifactId>jcommander</artifactId>
       <version>1.81</version>
     </dependency>
-    <dependency>
+    <!-- <dependency>
       <groupId>com.example</groupId>
       <artifactId>kuzu</artifactId>
       <version>0.6.0</version>
-    </dependency>
+    </dependency> -->
     <dependency>
       <groupId>com.redislabs</groupId>
       <artifactId>jredisgraph</artifactId>
