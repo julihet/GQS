@@ -15,8 +15,8 @@ import java.util.concurrent.atomic.AtomicLong;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.JCommander.Builder;
 
-import com.falkordb.FalkorDB;
-import com.falkordb.Graph;
+// import com.falkordb.FalkorDB;
+// import com.falkordb.Graph;
 import org.example.gqs.PrintGraph.PrintGraphProvider;
 import org.example.gqs.arcadeDB.ArcadeDBProvider;
 import org.example.gqs.common.log.Loggable;
@@ -25,8 +25,8 @@ import org.example.gqs.common.query.Query;
 import org.example.gqs.composite.CompositeProvider;
 import org.example.gqs.composite.oracle.CompositeMCTSOracle;
 import org.example.gqs.janusGraph.JanusProvider;
-import org.example.gqs.kuzuGraph.KuzuGraphProvider;
-import org.example.gqs.memGraph.MemGraphProvider;
+// import org.example.gqs.kuzuGraph.KuzuGraphProvider;
+// import org.example.gqs.memGraph.MemGraphProvider;
 import org.example.gqs.neo4j.Neo4jProvider;
 import org.example.gqs.tinkerGraph.TinkerConnection;
 import org.example.gqs.tinkerGraph.TinkerProvider;
@@ -605,29 +605,29 @@ public final class Main {
                 }
             }
         }
-        else if (MainOptions.mode == "falkordb")
-        {
-            boolean flag = false;
-            int cnt = 0;
-            Graph graph = FalkorDB.driver("127.0.0.1", (int) (20000 + i)).graph("social");
-            while (!flag) {
-                try {
-                    graph.query("MATCH (n) DETACH DELETE n");
-                    flag = true;
-                    graph.close();
-                    break;
-                } catch (Exception e) {
-                    System.out.println("wait for another moment");
-                    flag = false;
-                    cnt++;
-                    try {
-                        Thread.sleep(500);
-                    } catch (Exception f) {
-                        f.printStackTrace();
-                    }
-                }
-            }
-        }
+        // else if (MainOptions.mode == "falkordb")
+        // {
+        //     boolean flag = false;
+        //     int cnt = 0;
+        //     Graph graph = FalkorDB.driver("127.0.0.1", (int) (20000 + i)).graph("social");
+        //     while (!flag) {
+        //         try {
+        //             graph.query("MATCH (n) DETACH DELETE n");
+        //             flag = true;
+        //             graph.close();
+        //             break;
+        //         } catch (Exception e) {
+        //             System.out.println("wait for another moment");
+        //             flag = false;
+        //             cnt++;
+        //             try {
+        //                 Thread.sleep(500);
+        //             } catch (Exception f) {
+        //                 f.printStackTrace();
+        //             }
+        //         }
+        //     }
+        // }
         else if (MainOptions.mode == "kuzu"){}
         else{throw new RuntimeException("Mode not supported");}
         return true;
@@ -783,29 +783,29 @@ public final class Main {
                 }
             }
         }
-        else if (MainOptions.mode == "falkordb")
-        {
-            boolean flag = false;
-            int cnt = 0;
-            Graph graph = FalkorDB.driver("127.0.0.1", (int) (20000 + i)).graph("social");
-            while (!flag) {
-                try {
-                    graph.query("MATCH (n) DETACH DELETE n");
-                    flag = true;
-                    graph.close();
-                    break;
-                } catch (Exception e) {
-                    System.out.println("wait for another moment");
-                    flag = false;
-                    cnt++;
-                    try {
-                        Thread.sleep(500);
-                    } catch (Exception f) {
-                        f.printStackTrace();
-                    }
-                }
-            }
-        }
+        // else if (MainOptions.mode == "falkordb")
+        // {
+        //     boolean flag = false;
+        //     int cnt = 0;
+        //     Graph graph = FalkorDB.driver("127.0.0.1", (int) (20000 + i)).graph("social");
+        //     while (!flag) {
+        //         try {
+        //             graph.query("MATCH (n) DETACH DELETE n");
+        //             flag = true;
+        //             graph.close();
+        //             break;
+        //         } catch (Exception e) {
+        //             System.out.println("wait for another moment");
+        //             flag = false;
+        //             cnt++;
+        //             try {
+        //                 Thread.sleep(500);
+        //             } catch (Exception f) {
+        //                 f.printStackTrace();
+        //             }
+        //         }
+        //     }
+        // }
 
         else if (MainOptions.mode == "kuzu"){}
         else{throw new RuntimeException("Mode not supported");}
@@ -1179,15 +1179,15 @@ public final class Main {
     public static List<DatabaseProvider<?, ?, ?>> getDBMSProviders() {
         if(providers.size()==0){
             providers.add(new Neo4jProvider());
-            providers.add(new PrintGraphProvider());
-            providers.add(new AgensGraphProvider());
-            providers.add(new RedisGraphProvider());
-            providers.add(new MemGraphProvider());
-            providers.add(new ArcadeDBProvider());
-            providers.add(new JanusProvider());
-            providers.add(new TinkerProvider());
-            providers.add(new CompositeProvider());
-            providers.add(new KuzuGraphProvider());
+            // providers.add(new PrintGraphProvider());
+            // providers.add(new AgensGraphProvider());
+            // providers.add(new RedisGraphProvider());
+            // providers.add(new MemGraphProvider());
+            // providers.add(new ArcadeDBProvider());
+            // providers.add(new JanusProvider());
+            // providers.add(new TinkerProvider());
+            // providers.add(new CompositeProvider());
+            // providers.add(new KuzuGraphProvider());
         }
         return providers;
     }

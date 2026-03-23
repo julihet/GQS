@@ -2,9 +2,9 @@ package org.example.gqs.common.query;
 
 
 import com.alibaba.fastjson.JSONArray;
-import com.kuzudb.KuzuFlatTuple;
-import com.kuzudb.KuzuObjectRefDestroyedException;
-import com.kuzudb.KuzuQueryResult;
+// import com.kuzudb.KuzuFlatTuple;
+// import com.kuzudb.KuzuObjectRefDestroyedException;
+// import com.kuzudb.KuzuQueryResult;
 import org.neo4j.driver.Record;
 import org.neo4j.driver.Result;
 
@@ -164,31 +164,31 @@ public class GQSResultSet implements Closeable {
         return compare(secondGQSResultSet, false);
     }
 
-    public GQSResultSet(KuzuQueryResult rs) {
-        resultRowNum = 0;
-        result = new ArrayList<Map<String, Object>>();
-        try {
-            long size = rs.getNumColumns();
+    // public GQSResultSet(KuzuQueryResult rs) {
+    //     resultRowNum = 0;
+    //     result = new ArrayList<Map<String, Object>>();
+    //     try {
+    //         long size = rs.getNumColumns();
 
-            while (rs.hasNext()) {
-                Map<String, Object> row = new HashMap<String, Object>();
-                KuzuFlatTuple kuzurow = rs.getNext();
-                for (int i = 0; i < size; i++) {
-                    row.put(rs.getColumnName(i), kuzurow.getValue(i).getValue().toString());
-                }
-                kuzurow.destroy();
-                resultRowNum++;
-                result.add(row);
-            }
-            rs.destroy();
+    //         while (rs.hasNext()) {
+    //             Map<String, Object> row = new HashMap<String, Object>();
+    //             KuzuFlatTuple kuzurow = rs.getNext();
+    //             for (int i = 0; i < size; i++) {
+    //                 row.put(rs.getColumnName(i), kuzurow.getValue(i).getValue().toString());
+    //             }
+    //             kuzurow.destroy();
+    //             resultRowNum++;
+    //             result.add(row);
+    //         }
+    //         rs.destroy();
 
-        } catch (KuzuObjectRefDestroyedException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        System.out.println("result_size=" + resultRowNum);
-    }
+    //     } catch (KuzuObjectRefDestroyedException e) {
+    //         e.printStackTrace();
+    //     } catch (Exception e) {
+    //         e.printStackTrace();
+    //     }
+    //     System.out.println("result_size=" + resultRowNum);
+    // }
 
     public GQSResultSet(Map<String, Object> res) {
         resultRowNum = 1;
