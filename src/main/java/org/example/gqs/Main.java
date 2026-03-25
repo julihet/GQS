@@ -1157,6 +1157,7 @@ public final class Main {
         try {
             ProcessBuilder builder = new ProcessBuilder();
             Process process = builder.command(startCommand).start();
+            System.out.println("Process started");
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line;
