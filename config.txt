@@ -1,0 +1,3 @@
+startCommand=bash ~/neo4j_start.sh THREAD_FOLDER THREAD_WEB THREAD_SERVER
+stopCommand=bash ~/neo4j_stop.sh THREAD_WEB
+resetCommand=bash ~/neo4j_reset.sh THREAD_FOLDER

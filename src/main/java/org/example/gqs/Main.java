@@ -725,7 +725,7 @@ public final class Main {
             long cnt = 0;
             while (!flag) {
                 flag = false;
-                if (cnt > 20)
+                if (cnt > 60)
                     return false;
                 try (Driver driver = GraphDatabase.driver(uri, AuthTokens.basic(user, password));
                      Session session = driver.session()) {
@@ -1156,7 +1156,21 @@ public final class Main {
     public static void executeCommand(String[] startCommand) {
         try {
             ProcessBuilder builder = new ProcessBuilder();
-            Process process = builder.command(startCommand).start();
+            
+            // Check if we're on Windows and the command uses /bin/bash
+            if (System.getProperty("os.name").toLowerCase().contains("windows") && 
+                startCommand.length >= 3 && startCommand[0].equals("/bin/bash") && 
+                startCommand[1].equals("-c")) {
+                
+                // Convert bash command to Windows cmd command
+                String bashCommand = startCommand[2];
+                String[] windowsCommand = {"cmd", "/c", bashCommand};
+                builder.command(windowsCommand);
+            } else {
+                builder.command(startCommand);
+            }
+            
+            Process process = builder.start();
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line;
