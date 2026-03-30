@@ -3,7 +3,6 @@ package org.example.gqs.common.query;
 
 import com.alibaba.fastjson.JSONArray;
 import com.kuzudb.KuzuFlatTuple;
-import com.kuzudb.KuzuObjectRefDestroyedException;
 import com.kuzudb.KuzuQueryResult;
 import org.neo4j.driver.Record;
 import org.neo4j.driver.Result;
@@ -182,8 +181,6 @@ public class GQSResultSet implements Closeable {
             }
             rs.destroy();
 
-        } catch (KuzuObjectRefDestroyedException e) {
-            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
